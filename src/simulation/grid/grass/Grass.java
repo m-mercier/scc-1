@@ -1,3 +1,5 @@
+package src.simulation.grid.grass;
+
 public class Grass {
 	
 	private static final int growthCap = 30;
