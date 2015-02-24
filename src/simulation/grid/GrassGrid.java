@@ -1,11 +1,12 @@
 package src.simulation.grid;
 
-import src.simulation._aux.*;
+import src.simulation.auxiliary.*;
+import src.simulation.grid.grass.*;
 
 public class GrassGrid {
 	
-	public int width;
-	public int height;
+	private int width;
+	private int height;
 
 	private MyRandom rand;
 	private Grass[][] grassGrid;
