@@ -36,6 +36,26 @@ public class Simulation {
 		}
 	}
 
+	public void removeAnimal(Animal animal) {
+		if (animal instanceof Sheep) {
+			sheepArray.remove((Sheep)animal);
+		} else if (animal instanceof Wolf) {
+			sheepArray.remove((Wolf)animal);
+		}
+	}
+
+	public ArrayList<Sheep> getSheepAt(Position position) {
+		ArrayList<Sheep> sheepAtPosition = new ArrayList<Sheep>();
+
+		for (Sheep sheep : sheepArray) {
+			if (sheep.position.equals(position)) {
+				sheepAtPosition.add(sheep);
+			}
+		}
+
+		return sheepAtPosition;
+	}
+
 	private void spawnAnimals() {
 		int sheepMax = 100;
 		int wolfMax = 30;

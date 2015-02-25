@@ -26,6 +26,10 @@ public class Position {
 		return this.yCoord;
 	}
 
+	public boolean equals(Position position) {
+		return (this.getX() == position.getX() && this.getY() == position.getY()) ? true : false;
+	}
+
 	public static Position Add(Position... positions) {
 		int tempX = 0;
 		int tempY = 0;

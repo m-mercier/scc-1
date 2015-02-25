@@ -27,6 +27,10 @@ public abstract class Animal {
 		return this.position;
 	}
 
+	public void addEnergy(int energyBonus) {
+		this.setEnergy(this.getEnergy() + energyBonus);
+	}
+
 	public void setEnergy(int energyValue) {
 		this.energy = energyValue;
 	}
@@ -36,7 +40,11 @@ public abstract class Animal {
 	}
 
 	public void logic() {
-		move();
+		if (energy > 0) {
+			move();
+		} else {
+			simulation.removeAnimal(this);
+		}
 	}
 
 	private void move() {
@@ -48,6 +56,7 @@ public abstract class Animal {
 		newY = ((temp = this.position.getY() + rand.randInt(-STEP, STEP+1)) < simulation.getHeight()) ? temp : (simulation.getHeight()-1)-this.position.getY();
 
 		this.setPosition(new Position(newX, newY));
+		this.addEnergy(-1);
 	}
 
 	protected void reproduce(int probability) {
@@ -67,7 +76,7 @@ public abstract class Animal {
 			child = new Wolf(simulation);
 		}
 		child.setPosition(this.getPosition());
-		child.setEnergy(this.getEnergy());
+		child.setEnergy(this.getEnergy()/2);
 		simulation.addAnimal(child);
 
 	}

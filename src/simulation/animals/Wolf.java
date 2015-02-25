@@ -15,7 +15,12 @@ public class Wolf extends Animal {
 	}
 
     public void eatSheep(){
-    	//code to eat sheep
+    	ArrayList<Sheep> sheepAtPosition = simulation.getSheepAt(this.getPosition());
+    	if (sheepAtPosition.size() > 0) {
+    		Sheep sheepToRemove = sheepAtPosition.get(0);
+    		this.addEnergy(sheepToRemove.getEnergy());
+    		simulation.removeAnimal(sheepToRemove);
+    	}
     }
 
 	public void logic() {
