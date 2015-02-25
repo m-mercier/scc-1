@@ -6,6 +6,7 @@ import src.simulation.grid.*;
 public class Wolf extends Animal {
 
 	private static final int initEnergyCap = 30;
+	private static final int energyOnEat = 20;
 	protected static final int reproduceProb = 5;
 
 	public Wolf(Simulation simulation) {
@@ -18,7 +19,7 @@ public class Wolf extends Animal {
     	ArrayList<Sheep> sheepAtPosition = simulation.getSheepAt(this.getPosition());
     	if (sheepAtPosition.size() > 0) {
     		Sheep sheepToRemove = sheepAtPosition.get(0);
-    		this.addEnergy(sheepToRemove.getEnergy());
+    		this.addEnergy(energyOnEat);
     		simulation.removeAnimal(sheepToRemove);
     	}
     }

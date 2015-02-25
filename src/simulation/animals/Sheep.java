@@ -6,6 +6,7 @@ import src.simulation.grid.*;
 public class Sheep extends Animal {
 
 	private static final int initEnergyCap = 7;
+	private static final int energyOnEat = 4;
 	protected static final int reproduceProb = 4;
 
 	public Sheep(Simulation simulation) {
@@ -22,7 +23,7 @@ public class Sheep extends Animal {
 
         if (grid.getGrass(x, y).isGrown()) {
         	ArrayList<Sheep> sheepAtPosition = simulation.getSheepAt(this.getPosition());
-        	int energyBonus = 4/sheepAtPosition.size();
+        	int energyBonus = energyOnEat/sheepAtPosition.size();
 
         	grid.getGrass(x, y).setGrowth(0);
         	for (Sheep sheep : sheepAtPosition) {
