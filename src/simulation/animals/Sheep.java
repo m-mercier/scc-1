@@ -1,5 +1,6 @@
 package src.simulation.animals;
 
+import java.util.*;
 import src.simulation.*;
 import src.simulation.grid.*;
 
@@ -34,7 +35,7 @@ public class Sheep extends Animal {
 
 	public void logic() {
 		super.logic();
-		eatGrass(); //method missing
+		eatGrass();
 		super.reproduce(reproduceProb);
 	}
 }

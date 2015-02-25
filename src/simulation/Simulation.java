@@ -1,9 +1,11 @@
 package src.simulation;
 
+import java.io.IOException;
 import java.util.*;
 import src.simulation.animals.*;
 import src.simulation.auxiliary.*;
 import src.simulation.grid.GrassGrid;
+import src.simulation.log.MyLog;
 
 
 public class Simulation {
@@ -26,6 +28,8 @@ public class Simulation {
 		this.simulationTime = time;
 
 		spawnAnimals();
+
+        start();
 	}
 
 	public void addAnimal(Animal newAnimal) {
@@ -48,7 +52,7 @@ public class Simulation {
 		ArrayList<Sheep> sheepAtPosition = new ArrayList<Sheep>();
 
 		for (Sheep sheep : sheepArray) {
-			if (sheep.position.equals(position)) {
+			if (sheep.getPosition().equals(position)) {
 				sheepAtPosition.add(sheep);
 			}
 		}
@@ -76,6 +80,12 @@ public class Simulation {
 	}
 
 	public void start() {
+
+        MyLog log_sheep = new MyLog("sheep.txt");
+        MyLog log_wolves = new MyLog("wolves.txt");
+        MyLog log_grass = new MyLog("grass.txt");
+        int grassCounter = 0;
+
 		for (int i = 0; i < this.simulationTime; i++) {
 			for (Sheep sheep : sheepArray) {
 				sheep.logic();
@@ -86,7 +96,32 @@ public class Simulation {
 			}
 			
 			grassGrid.growGrass();
+
+            try{
+                log_sheep.write(String.format("%d\n", sheepArray.size()));
+                log_wolves.write(String.format("%d\n", wolfArray.size()));
+                for (int j = 0; j < WIDTH; j++){
+                    for (int k = 0; k < HEIGHT; k++){
+                        if (getGrassGrid().getGrass(j,k).isGrown()){
+                            grassCounter++;
+                        }
+
+                    }
+                }
+                log_grass.write(String.format("%d\n", grassCounter));
+            } catch (IOException e){
+                System.out.println("Error writing to file.");
+            }
+
 		}
+
+        try {
+            log_sheep.close();
+            log_wolves.close();
+            log_grass.close();
+        } catch (IOException e){
+            System.out.println("Error closing file.");
+        }
 	}
 
 	public int getWidth() {

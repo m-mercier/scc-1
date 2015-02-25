@@ -1,7 +1,7 @@
 package src.simulation.animals;
 
+import java.util.*;
 import src.simulation.*;
-import src.simulation.grid.*;
 
 public class Wolf extends Animal {
 
