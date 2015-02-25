@@ -2,8 +2,8 @@ package src.simulation.log;
 
 public class MyLog {
 
-	BufferedWriter out = null;
-	FileWriter fstream = null;
+	private BufferedWriter out = null;
+	private FileWriter fstream = null;
 
 	public MyLog(String fileName) {
 		try {
