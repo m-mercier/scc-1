@@ -93,7 +93,6 @@ public class Simulation {
         MyLog log_sheep = new MyLog("sheep.txt");
         MyLog log_wolves = new MyLog("wolves.txt");
         MyLog log_grass = new MyLog("grass.txt");
-        int grassCounter = 0;
 
         loop(log_sheep, log_wolves, log_grass);
         closeLogs(log_sheep, log_wolves, log_grass);
@@ -112,11 +111,14 @@ public class Simulation {
 			}
 			
 			grassGrid.growGrass();
-			writeLogs();
+			writeLogs(log_sheep, log_wolves, log_grass);
 		}
 	}
 
 	private void writeLogs(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
+
+		int grassCounter = 0;
+		
 		try{
             log_sheep.write(String.format("%d\n", sheepArray.size()));
             log_wolves.write(String.format("%d\n", wolfArray.size()));
