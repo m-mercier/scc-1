@@ -67,14 +67,14 @@ public class Simulation {
 		//generate all the sheep
 		for (int i = 0; i < sheepMax; i++) {
 			Sheep newSheep = new Sheep(this);
-			newSheep.setPosition(new Position(random.randInt(0, WIDTH+1), random.randInt(0, HEIGHT+1)));
+			newSheep.setPosition(new Position(random.randInt(0, WIDTH-1), random.randInt(0, HEIGHT-1)));
 			addAnimal(newSheep);
 		}
 
 		//generate all the wolves
 		for (int i = 0; i < wolfMax; i++) {
 			Wolf newWolf = new Wolf(this);
-			newWolf.setPosition(new Position(random.randInt(0, WIDTH+1), random.randInt(0, HEIGHT+1)));
+			newWolf.setPosition(new Position(random.randInt(0, WIDTH-1), random.randInt(0, HEIGHT-1)));
 			addAnimal(newWolf);
 		}
 	}

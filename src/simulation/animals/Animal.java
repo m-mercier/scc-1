@@ -52,8 +52,27 @@ public abstract class Animal {
 		int newY;
         int temp;
 
-		newX = ((temp = this.position.getX() + rand.randInt(-STEP, STEP+1)) < simulation.getWidth()) ? temp : (simulation.getWidth()-1)-this.position.getX();
-		newY = ((temp = this.position.getY() + rand.randInt(-STEP, STEP+1)) < simulation.getHeight()) ? temp : (simulation.getHeight()-1)-this.position.getY();
+		//newX = ((temp = this.position.getX() + rand.randInt(-STEP, STEP+1)) < simulation.getWidth()) ? temp : (simulation.getWidth()-1)-this.position.getX();
+
+        temp = this.position.getX() + rand.randInt(-STEP, STEP + 1);
+
+        if (temp > (simulation.getWidth() - 1) || temp < 0){
+            newX = (simulation.getWidth() - 1) - this.position.getX();
+        }
+        else{
+            newX = temp;
+        }
+
+		//newY = ((temp = this.position.getY() + rand.randInt(-STEP, STEP+1)) < simulation.getHeight()) ? temp : (simulation.getHeight()-1)-this.position.getY();
+
+        temp = this.position.getY() + rand.randInt(-STEP, STEP + 1);
+
+        if (temp > (simulation.getHeight() - 1) || temp < 0){
+            newY = (simulation.getHeight() - 1) - this.position.getY();
+        }
+        else{
+            newY = temp;
+        }
 
 		this.setPosition(new Position(newX, newY));
 		this.addEnergy(-1);
