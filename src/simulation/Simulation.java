@@ -44,12 +44,15 @@ public class Simulation {
 
 	}
 
-    public void addNew(Animal newAnimal){
-        if (newAnimal instanceof Sheep) {
-            sheepArray.add((Sheep)newAnimal);
-        } else if (newAnimal instanceof Wolf) {
-            wolfArray.add((Wolf)newAnimal);
-        }
+    private void addNew(){
+    	for (Animal animal : animalAdd) {
+        	if (newAnimal instanceof Sheep) {
+            	sheepArray.add((Sheep)newAnimal);
+        	} else if (newAnimal instanceof Wolf) {
+            	wolfArray.add((Wolf)newAnimal);
+        	}
+    	}
+    	animalAdd.clear();
     }
 
 	public void removeAnimal(Animal animal) {
@@ -121,9 +124,7 @@ public class Simulation {
 			
 			grassGrid.growGrass();
 			cleanup();
-            for (Animal animal : animalAdd){
-                addNew(animal);
-            }
+            addNew();
 			writeLogs(log_sheep, log_wolves, log_grass);
 		}
 	}
