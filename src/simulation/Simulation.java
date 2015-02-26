@@ -45,7 +45,7 @@ public class Simulation {
 	}
 
     private void addNew(){
-    	for (Animal animal : animalAdd) {
+    	for (Animal newAnimal : animalAdd) {
         	if (newAnimal instanceof Sheep) {
             	sheepArray.add((Sheep)newAnimal);
         	} else if (newAnimal instanceof Wolf) {
