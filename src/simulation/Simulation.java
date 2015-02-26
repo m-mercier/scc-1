@@ -21,6 +21,7 @@ public class Simulation {
 	private MyRandom random;
 
 	private ArrayList<Animal> animalCleanup;
+    private ArrayList<Animal> animalAdd; //NOVO
 
 	public Simulation(int time) {
 		random = new MyRandom();
@@ -29,19 +30,25 @@ public class Simulation {
 		wolfArray = new ArrayList<Wolf>();
 		this.simulationTime = time;
 		animalCleanup = new ArrayList<Animal>();
+        animalAdd = new ArrayList<Animal>(); //NOVO
 
 		spawnAnimals();
 
         start();
 	}
 
-	public void addAnimal(Animal newAnimal) {
-		if (newAnimal instanceof Sheep) {
-			sheepArray.add((Sheep)newAnimal);
-		} else if (newAnimal instanceof Wolf) {
-			wolfArray.add((Wolf)newAnimal);
-		}
+	public void addAnimal(Animal animal) {
+        animalAdd.add(animal);
+
 	}
+
+    public void addNew(Animal newAnimal){
+        if (newAnimal instanceof Sheep) {
+            sheepArray.add((Sheep)newAnimal);
+        } else if (newAnimal instanceof Wolf) {
+            wolfArray.add((Wolf)newAnimal);
+        }
+    }
 
 	public void removeAnimal(Animal animal) {
 		animalCleanup.add(animal);
@@ -101,7 +108,6 @@ public class Simulation {
 	}
 
 	private void loop(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
-
 		for (int i = 0; i < this.simulationTime; i++) {
 			for (Sheep sheep : sheepArray) {
 				sheep.logic();
@@ -113,6 +119,9 @@ public class Simulation {
 			
 			grassGrid.growGrass();
 			cleanup();
+            for (Animal animal : animalAdd){
+                addNew(animal);
+            }
 			writeLogs(log_sheep, log_wolves, log_grass);
 		}
 	}
