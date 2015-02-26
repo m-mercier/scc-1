@@ -55,6 +55,7 @@ public class Simulation {
 				sheepArray.remove((Wolf)animal);
 			}
 		}
+		animalCleanup.clear();
 	}
 
 	public ArrayList<Sheep> getSheepAt(Position position) {
