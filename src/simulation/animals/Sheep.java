@@ -34,8 +34,12 @@ public class Sheep extends Animal {
     }
 
 	public void logic() {
-		super.logic();
-		eatGrass();
-		super.reproduce(reproduceProb);
+        if (this.getEnergy() > 0) {
+            super.logic();
+            eatGrass();
+            super.reproduce(reproduceProb);
+        } else {
+            simulation.removeAnimal(this);
+        }
 	}
 }

@@ -40,11 +40,7 @@ public abstract class Animal {
 	}
 
 	public void logic() {
-		if (energy > 0) {
-			move();
-		} else {
-			simulation.removeAnimal(this);
-		}
+		move();
 	}
 
 	private void move() {

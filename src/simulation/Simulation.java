@@ -112,6 +112,7 @@ public class Simulation {
 			}
 			
 			grassGrid.growGrass();
+			cleanup();
 			writeLogs(log_sheep, log_wolves, log_grass);
 		}
 	}
