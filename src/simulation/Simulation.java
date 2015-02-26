@@ -91,9 +91,9 @@ public class Simulation {
 
 	public void start() {
 
-        MyLog log_sheep = new MyLog("sheep.txt");
-        MyLog log_wolves = new MyLog("wolves.txt");
-        MyLog log_grass = new MyLog("grass.txt");
+        MyLog log_sheep = new MyLog("Logs/sheep.txt");
+        MyLog log_wolves = new MyLog("Logs/wolves.txt");
+        MyLog log_grass = new MyLog("Logs/grass.txt");
 
         loop(log_sheep, log_wolves, log_grass);
         closeLogs(log_sheep, log_wolves, log_grass);
