@@ -26,7 +26,7 @@ public class Wolf extends Animal {
 
 	public void logic() {
 		super.logic();
-		eatSheep(); //method missing
+		eatSheep();
 		super.reproduce(reproduceProb);
 	}
 }

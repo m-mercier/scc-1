@@ -20,12 +20,15 @@ public class Simulation {
 
 	private MyRandom random;
 
+	private ArrayList<Animal> animalCleanup;
+
 	public Simulation(int time) {
 		random = new MyRandom();
 		grassGrid = new GrassGrid(WIDTH, HEIGHT);
 		sheepArray = new ArrayList<Sheep>();
 		wolfArray = new ArrayList<Wolf>();
 		this.simulationTime = time;
+		animalCleanup = new ArrayList<Animal>();
 
 		spawnAnimals();
 
@@ -41,10 +44,16 @@ public class Simulation {
 	}
 
 	public void removeAnimal(Animal animal) {
-		if (animal instanceof Sheep) {
-			sheepArray.remove((Sheep)animal);
-		} else if (animal instanceof Wolf) {
-			sheepArray.remove((Wolf)animal);
+		animalCleanup.add(animal);
+	}
+
+	private void cleanup() {
+		for (Animal animal : animalCleanup) {
+			if (animal instanceof Sheep) {
+				sheepArray.remove((Sheep)animal);
+			} else if (animal instanceof Wolf) {
+				sheepArray.remove((Wolf)animal);
+			}
 		}
 	}
 
@@ -86,6 +95,13 @@ public class Simulation {
         MyLog log_grass = new MyLog("grass.txt");
         int grassCounter = 0;
 
+        loop(log_sheep, log_wolves, log_grass);
+        closeLogs(log_sheep, log_wolves, log_grass);
+
+	}
+
+	private void loop(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
+
 		for (int i = 0; i < this.simulationTime; i++) {
 			for (Sheep sheep : sheepArray) {
 				sheep.logic();
@@ -96,31 +112,37 @@ public class Simulation {
 			}
 			
 			grassGrid.growGrass();
-
-            try{
-                log_sheep.write(String.format("%d\n", sheepArray.size()));
-                log_wolves.write(String.format("%d\n", wolfArray.size()));
-                for (int j = 0; j < WIDTH; j++){
-                    for (int k = 0; k < HEIGHT; k++){
-                        if (getGrassGrid().getGrass(j,k).isGrown()){
-                            grassCounter++;
-                        }
-
-                    }
-                }
-                log_grass.write(String.format("%d\n", grassCounter));
-            } catch (IOException e){
-                System.out.println("Error writing to file.");
-            }
-
+			writeLogs();
 		}
+	}
 
-        try {
+	private void writeLogs(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
+		try{
+            log_sheep.write(String.format("%d\n", sheepArray.size()));
+            log_wolves.write(String.format("%d\n", wolfArray.size()));
+            for (int j = 0; j < WIDTH; j++){
+                for (int k = 0; k < HEIGHT; k++){
+                    if (getGrassGrid().getGrass(j,k).isGrown()){
+                        grassCounter++;
+                    }
+
+                }
+            }
+            log_grass.write(String.format("%d\n", grassCounter));
+        } catch (IOException e){
+            System.out.println("Error writing to file.");
+            e.printStackTrace();
+        }
+	}
+
+	private void closeLogs(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
+		try {
             log_sheep.close();
             log_wolves.close();
             log_grass.close();
         } catch (IOException e){
-            System.out.println("Error closing file.");
+            System.out.println("Error closing log files.");
+            e.printStackTrace();
         }
 	}
 
