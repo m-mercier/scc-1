@@ -21,7 +21,7 @@ public class Simulation {
 	private MyRandom random;
 
 	private ArrayList<Animal> animalCleanup;
-    private ArrayList<Animal> animalAdd; //NOVO
+    private ArrayList<Animal> animalAdd;
 
 	public Simulation(int time) {
 		random = new MyRandom();
@@ -30,7 +30,9 @@ public class Simulation {
 		wolfArray = new ArrayList<Wolf>();
 		this.simulationTime = time;
 		animalCleanup = new ArrayList<Animal>();
-        animalAdd = new ArrayList<Animal>(); //NOVO
+        animalAdd = new ArrayList<Animal>();
+
+        
 
 		spawnAnimals();
 
@@ -129,10 +131,11 @@ public class Simulation {
 	private void writeLogs(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
 
 		int grassCounter = 0;
+        String separator = System.getProperty("line.separator");
 		
 		try{
-            log_sheep.write(String.format("%d\n", sheepArray.size()));
-            log_wolves.write(String.format("%d\n", wolfArray.size()));
+            log_sheep.write(String.format("%d"+separator, sheepArray.size()));
+            log_wolves.write(String.format("%d"+separator, wolfArray.size()));
             for (int j = 0; j < WIDTH; j++){
                 for (int k = 0; k < HEIGHT; k++){
                     if (getGrassGrid().getGrass(j,k).isGrown()){
@@ -141,7 +144,7 @@ public class Simulation {
 
                 }
             }
-            log_grass.write(String.format("%d\n", grassCounter));
+            log_grass.write(String.format("%d"+separator, grassCounter));
         } catch (IOException e){
             System.out.println("Error writing to file.");
             e.printStackTrace();

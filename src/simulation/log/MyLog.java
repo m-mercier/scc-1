@@ -9,7 +9,7 @@ public class MyLog {
 
 	public MyLog(String fileName) {
 		try {
-			FileWriter fstream = new FileWriter(fileName, true);
+			FileWriter fstream = new FileWriter(fileName, false);
     		out = new BufferedWriter(fstream);
     	} catch (IOException e) {
     		System.out.println(String.format("Could not open log file '%s': %s", fileName, e.getMessage()));
