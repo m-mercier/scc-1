@@ -64,7 +64,7 @@ public class Simulation {
 			if (animal instanceof Sheep) {
 				sheepArray.remove((Sheep)animal);
 			} else if (animal instanceof Wolf) {
-				sheepArray.remove((Wolf)animal);
+				wolfArray.remove((Wolf)animal);
 			}
 		}
 		animalCleanup.clear();
