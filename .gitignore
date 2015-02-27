@@ -59,3 +59,5 @@ crashlytics-build.properties
 # Java .Class files
 *.class
 *.CLASS
+
+Logs
