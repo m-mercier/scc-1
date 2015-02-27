@@ -4,16 +4,16 @@ import java.util.Random;
 
 public class MyRandom {
 
-	private Random rand;
+  private Random rand;
 
-	public MyRandom() {
-		rand = new Random();
-	}
+  public MyRandom() {
+    rand = new Random();
+  }
 
-	public int randInt(int min, int max) {
+  public int randInt(int min, int max) {
 
-    	int randomNum = rand.nextInt((max - min) + 1) + min;
+    int randomNum = rand.nextInt((max - min) + 1) + min;
 
-    	return randomNum;
-	}
+    return randomNum;
+  }
 }
