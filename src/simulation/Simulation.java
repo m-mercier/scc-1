@@ -109,7 +109,7 @@ public class Simulation {
 
     loop(log_sheep, log_wolves, log_grass);
     closeLogs(log_sheep, log_wolves, log_grass);
-
+    System.out.println("Logs written.");
   }
 
   private void loop(MyLog log_sheep, MyLog log_wolves, MyLog log_grass) {
