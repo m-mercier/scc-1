@@ -20,7 +20,7 @@ public class Wolf extends Animal {
     if (sheepAtPosition.size() > 0) {
       Sheep sheepToRemove = sheepAtPosition.get(0);
       this.addEnergy(energyOnEat);
-      simulation.removeAnimal(sheepToRemove);
+      simulation.getSheepArray().remove(sheepToRemove);
     }
   }
 

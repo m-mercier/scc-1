@@ -174,4 +174,8 @@ public class Simulation {
   public GrassGrid getGrassGrid() {
     return this.grassGrid;
   }
+
+  public ArrayList<Sheep> getSheepArray(){
+      return this.sheepArray;
+  }
 }
