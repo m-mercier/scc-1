@@ -6,7 +6,7 @@ import src.simulation.*;
 public class Wolf extends Animal {
 
   private static final int initEnergyCap = 30;
-  private static final int energyOnEat = 20;
+  private static final int energyOnEat = 6;
   protected static final int reproduceProb = 5;
 
   public Wolf(Simulation simulation) {

@@ -8,7 +8,7 @@ public class Sheep extends Animal {
 
   private static final int initEnergyCap = 7;
   private static final int energyOnEat = 4;
-  protected static final int reproduceProb = 4;
+  protected static final int reproduceProb = 10;
 
   public Sheep(Simulation simulation) {
     super.randomGenerator();
