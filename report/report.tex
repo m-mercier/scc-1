@@ -21,22 +21,20 @@
 \begin{document}
 \maketitle
 
+\section*{Introdução}
 O primeiro trabalho de Simulação e Computação Científica consiste num ecossistema
-descrito por uma grelha bidimensional, habitado por lobos e ovelhas.
+descrito por uma grelha bidimensional com vegetação, habitado por lobos e ovelhas.
 
-Ao simularmos o ambiente, implementado em Java, detetamos que tanto os lobos como
+Ao simularmos o ambiente, implementado em Java, detetámos que tanto os lobos como
 as ovelhas morriam prematuramente (os lobos extinguiam-se depois de mais ou menos
-700 iterações). Assim, encontramos valores mais apropriados para a simulação, de
-forma a que haja sempre lobos e ovelhas durante as 5000 unidades de tempo.
+700 iterações). Assim, encontrámos valores mais apropriados para a simulação, de
+forma a que este seja um ecossistema estável, ou seja, para que haja sempre lobos, ovelhas e vegetação durante as 5000 unidades de tempo.
 
-Os valores que alteramos foram a probabilidade de reprodução das ovelhas, que aumentamos
-de \texttt{0.04} para \texttt{0.10} e a energia ganha pelos lobos ao comer uma ovelha, que
-diminuimos de \texttt{20} para \texttt{6}.
+Apresentamos, de seguida, os diferentes resultados obtidos de acordo com os dados do
+enunciado e de acordo com os novos valores que encontrámos.
 
-Apresentamos, de seguida, os diferentes gráficos do número de ovelhas de acordo com os valores do
-enunciado e de acordo com os valores que alteramos.
-
-\section{Valores do Enunciado}
+\section*{Resultados}
+\subsection{Valores do Enunciado}
 
 \begin{figure}[H]
   \centering
@@ -44,8 +42,7 @@ enunciado e de acordo com os valores que alteramos.
   \caption{Distribuição de Lobos e Ovelhas}
 \end{figure}
 
-A partir deste gráfico não é possível tirar grandes conclusões em relação
-à evolução dos lobos e das ovelhas.
+Podemos observar neste gráfico que, utilizando os dados do enunciado, ao fim de, aproximadamente, 700 unidades de tempo todas as ovelhas morrem (morte esta que pode ser causada por vários factores: a predação dos lobos, o facto de não encontrarem vegetação ou uma pequena taxa de reprodução) o que causa também a morte dos lobos, que acabam por ficar sem alimento.
 
 \begin{figure}[H]
   \centering
@@ -53,7 +50,9 @@ A partir deste gráfico não é possível tirar grandes conclusões em relação
   \caption{Evolução da Vegetação, em unidades}
 \end{figure}
 
-\section{Valores Alterados}
+Analisando este gráfico podemos observar que, com o aumento do número de ovelhas, há um decréscimo de vegetação e após a morte dos animais esta cresce continuamente.
+
+\subsection{Valores Alterados}
 
 \begin{figure}[H]
   \centering
@@ -61,8 +60,12 @@ A partir deste gráfico não é possível tirar grandes conclusões em relação
   \caption{Distribuição de Lobos e Ovelhas}
 \end{figure}
 
+Para obter este resultado, alterámos a probabilidade de reprodução das ovelhas, que aumentamos
+de \texttt{0.04} para \texttt{0.10} e a energia ganha pelos lobos ao comer uma ovelha, que
+diminuimos de \texttt{20} para \texttt{6}.
+
 Podemos notar, neste gráfico, o rápido crescimento do número de ovelhas nas primeiras iterações
-da simulação devido ao aumento da probabilidade de reprodução destas.
+da simulação, uma vez que aumentámos a probabilidade de reprodução destas. Notamos ainda que o número de lobos nunca é muito elevado (nem superior ao número de ovelhas), devido à diminuição da energia ganha quando se alimentam, o que faz com que o tempo de vida de cada lobo seja menor.
 
 \begin{figure}[H]
   \centering
@@ -70,11 +73,17 @@ da simulação devido ao aumento da probabilidade de reprodução destas.
   \caption{Evolução da Vegetação, em unidades}
 \end{figure}
 
-\section{Análise de Resultados e Conclusão}
+Neste caso observamos, inicialmente, um decréscimo acentuado da vegetação, devido ao grande aumento do número de ovelhas. Após os momentos iniciais, a evolução da vegetação estabiliza, mantendo-se dentro dos mesmo valores, aproximadamente.
+
+\section*{Análise de Resultados e Conclusão}
 
 Podemos concluir, comparando os gráficos da evolução da vegetação entre os dois
 \textit{datasets}, que a vegetação é muito mais constante com os valores alterados.
-Isto acontece porque a falta de ovelhas faz com que a vegetação cresça linearmente.
+Isto acontece porque o crescimento e decrescimento estável das ovelhas faz com que a vegetação cresça linearmente.
+
+Para além disto, obervamos que, enquanto no primeiro caso há um aumento acentuado de animais seguido de um decréscimo brusco até à sua morte, na segunda situação a quantidade de animais se mantém mais estável desde o início até ao fim da simulação.
+
+Concluímos assim que os novos valores encontrados permitem manter um ecossistema equilibrado, mantendo vegetação, lobos e ovelhas vivos até ao final das 5000 iterações.
 
 
 \end{document}
