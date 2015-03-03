@@ -24,7 +24,7 @@ public class Sheep extends Animal {
 
     if (grid.getGrass(x, y).isGrown()) {
       ArrayList<Sheep> sheepAtPosition = simulation.getSheepAt(this.getPosition());
-      int energyBonus = energyOnEat/sheepAtPosition.size();
+      int energyBonus = energyOnEat/sheepAtPosition.size(); // should be float
 
       grid.getGrass(x, y).setGrowth(0);
       for (Sheep sheep : sheepAtPosition) {

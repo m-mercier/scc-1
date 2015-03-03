@@ -17,7 +17,7 @@ public class Wolf extends Animal {
 
   public void eatSheep(){
     ArrayList<Sheep> sheepAtPosition = simulation.getSheepAt(this.getPosition());
-    if (sheepAtPosition.size() > 0) {
+    if (sheepAtPosition.size() > 0) { // energy should be divided by the number of wolves at a grass block
       Sheep sheepToRemove = sheepAtPosition.get(0);
       this.addEnergy(energyOnEat);
       simulation.getSheepArray().remove(sheepToRemove);
