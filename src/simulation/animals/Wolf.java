@@ -26,9 +26,9 @@ public class Wolf extends Animal {
 
   public void logic() {
     if (this.getEnergy() > 0) {
-      super.logic();
       eatSheep();
       super.reproduce(reproduceProb);
+      super.logic();
     } else {
       simulation.removeAnimal(this);
     }
