@@ -1,7 +1,7 @@
 scc-project-1
 ===========
 
-Simulation and Scientific Computation 2014/2015 Course Project
+Simulation and Scientific Computation 2014/2015 Course Project 1
 
 ## Synopsis
 
